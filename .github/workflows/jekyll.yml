@@ -21,6 +21,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7.0.1
+      - name: Enable GitHub Pages for the published branch
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if curl -fsS -H "Authorization: Bearer ${GH_TOKEN}" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${{ github.repository }}/pages"; then
+            echo "GitHub Pages is already configured."
+          else
+            curl -sS -X POST -H "Authorization: Bearer ${GH_TOKEN}" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${{ github.repository }}/pages" --data '{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"}}'
+          fi
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:

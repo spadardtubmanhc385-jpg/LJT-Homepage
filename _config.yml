@@ -56,7 +56,7 @@ facebook:
   app_id                 :
   publisher              :
 og_image                 :
-og_description           : #"Junteng Liu's academic portfolio"
+og_description           :
 social:
   type                   : Person
   name                   : "Junteng Liu"
@@ -83,6 +83,7 @@ exclude:
   - .github
   - .jekyll-assets-cache
   - .sass-cache
+  - AGENTS.md
   - assets/js/_main.js
   - assets/js/plugins
   - assets/js/vendor
@@ -96,10 +97,16 @@ exclude:
   - LICENSE
   - local
   - log
+  - markdown_generator
   - node_modules
   - package.json*
   - Rakefile
   - README
+  - scripts
+  - talkmap
+  - talkmap.ipynb
+  - talkmap.py
+  - talkmap_out.ipynb
   - tmp
   - vendor
 keep_files:
